@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+.main-header {
+    color: green;
+    background-color: lightblue;
+    border: 1px single black;
+}
+
+img {
+    padding: 20px
+}
+
+.header-text {
+    color: black;
+    font-size: 1.5em;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.sports-table {
+    color: black;
+    font-size: 1.5em;
+    font-family: Arial;
+    font-weight: bold;
+    padding: 10px 50px;
+}
+
+.comment-header {
+    color: black;
+    font-size: 1em;
+    font-family: Arial;
+    font-weight: bold;
+    padding: 10px 50px;
+    border: none;
+}
+
+.comment-page {
+    color: green;
+    font-size: 1.5em;
+    font-family: Arial;
+    font-weight: bold;
+    padding: 10px 50px;
+}
+
+.table-header {
+    color: black;
+    margin: 10px;
+}
+
+td {
+    padding: 10px 10px;
+    border: sols_id 1px black;
+    text-align: center;
+}
+
+.head {
+    padding: 1px 1px;
+}
+
+.form-comment-treatment {
+    padding: 0px 50px;
+}
+
