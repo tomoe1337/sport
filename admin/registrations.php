@@ -23,6 +23,20 @@ if (!isset($_SESSION['user']['is_admin']) || !$_SESSION['user']['is_admin']) {
 
 	<h1>Управление записями</h1>
 
+	<form method="GET">
+		<div>
+			<label for="user_id">ID Пользователя:</label>
+			<input type="text" id="user_id" name="user_id" value="<?= htmlspecialchars($_GET['user_id'] ?? '') ?>">
+		</div>
+		<div>
+			<label for="sport_id">ID Мероприятия:</label>
+			<input type="text" id="sport_id" name="sport_id" value="<?= htmlspecialchars($_GET['sport_id'] ?? '') ?>">
+		</div>
+		<div>
+			<button type="submit">Применить фильтр</button>
+		</div>
+	</form>
+
  <?php
  // Обработка фильтрации
  $filter_user_id = $_GET['user_id'] ?? null;
@@ -78,7 +92,7 @@ if (!isset($_SESSION['user']['is_admin']) || !$_SESSION['user']['is_admin']) {
 				echo '<tr>';
 				echo '<td>' . htmlspecialchars($row['registration_id']) . '</td>';
 				echo '<td>' . htmlspecialchars($row['full_name']) . '</td>';
-				echo '<td>' . htmlspecialchars($row['name']) . '</td>';
+				echo '<td>' . htmlspecialchars($row['sport_name']) . '</td>';
 				echo '<td>' . htmlspecialchars($row['registration_date']) . '</td>';
 				echo '<td><a href="../vendor/cancel_registration.php?registration_id=' . $row['registration_id'] . '">Отменить</a></td>';
 				echo '</tr>';

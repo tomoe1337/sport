@@ -12,29 +12,28 @@
        echo '<p style="color: red;">Это мероприятие уже прошло.</p>';
    }
     echo '<table class="sports-table">';
+   // Add table headers here if needed
+   echo '<thead>';
+   echo '<tr>';
+   echo '<th>Название</th>';
+   echo '<th>Дата</th>';
+   echo '<th>Стоимость</th>';
+   echo '<th>Изображение</th>';
+   echo '<th>Записано</th>';
+   echo '<th>Действия</th>'; // Колонка для кнопок действий
+   echo '</tr>';
+   echo '</thead>';
+   echo '<tbody>';
     while ($sport = mysqli_fetch_assoc($data)){
         echo '<tr>';
-       // Assuming you want headers, add them before the loop
-       // This part is commented out as the original code doesn't have headers
-       /*
-       echo '<thead>';
-       echo '<tr>';
-       echo '<th>ID</th>';
-       echo '<th>Название</th>';
-       echo '<th>Цена (ID)</th>';
-       echo '<th>Страна</th>';
-       echo '<th>Дата</th>';
-       echo '<th>Стоимость</th>';
-       echo '<th>Записано</th>';
-       echo '<th>Действия</th>';
-       echo '</tr>';
-       echo '</thead>';
-       */
         echo "<td>{$sport['name']}</td>";
         echo "<td>{$sport['date']}</td>";
         echo "<td>{$sport['Cost']}</td>";
- echo '<td>';
- echo "<a href='vendor/register_for_sport.php?s_id={$sport['s_id']}' class='btn btn-primary btn-sm'>Записаться</a>";
+       echo '<td>';
+       echo "<a href='sport.php?s_id={$sport['s_id']}'>";
+       echo "<img src='static/{$sport["image"]}' alt='' height='80px'>";
+       echo "</a>";
+       echo "</td>";
  echo '</td>';
         echo '<td>';
         echo "<a href='sport.php?s_id={$sport['s_id']}'>";
@@ -42,9 +41,18 @@
         echo "</a>";
         echo "<a href='edit_sport.php?s_id={$sport['s_id']}' class='btn btn-secondary btn-sm'>Редактировать</a> ";
         echo "<a href='vendor/delete_sport.php?s_id={$sport['s_id']}' class='btn btn-danger btn-sm'>Удалить</a> ";
-        echo "</a>";
         echo "</td>";
  echo "<td>{$sport['registered_count']}</td>";
+       echo '<td>'; // Ячейка для кнопок действий
+       // Проверяем, залогинен ли пользователь и является ли он автором мероприятия
+       if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $sport['author_id']) {
+           // Пользователь является автором, показываем кнопки Редактировать и Удалить
+           echo "<a href='edit_sport.php?s_id={$sport['s_id']}'>Редактировать</a> ";
+           echo "<a href='vendor/delete_sport.php?s_id={$sport['s_id']}' onclick=\"return confirm('Вы уверены, что хотите удалить это мероприятие?');\">Удалить</a>";
+       } else {
+           // Пользователь не является автором или не залогинен, показываем кнопку Записаться
+           echo "<a href='vendor/register_for_sport.php?s_id={$sport['s_id']}' class='btn btn-primary btn-sm'>Записаться</a>";
+       }
         echo '</tr>';
     }
     echo '</table>';

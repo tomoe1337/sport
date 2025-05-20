@@ -2,7 +2,7 @@
 require_once "vendor/connect.php";
 
 // Начало SQL запроса с условием по дате
-$sql = "SELECT e.*, d.Cost, COUNT(registrations.registration_id) AS registered_count FROM `sport` e JOIN price_id d ON e.price = d.P_id LEFT JOIN registrations ON e.s_id = registrations.sport_id WHERE e.date >= CURDATE()";
+$sql = "SELECT e.*, d.Cost, COUNT(registrations.registration_id) AS registered_count, e.author_id FROM `sport` e JOIN price_id d ON e.price = d.P_id LEFT JOIN registrations ON e.s_id = registrations.sport_id WHERE e.date >= CURDATE()";
 
 $params = [];
 $types = '';
@@ -26,7 +26,7 @@ if (!empty($filter_conditions)) {
 }
 
 // Добавляем GROUP BY
-$sql .= " GROUP BY e.s_id, e.name, e.price, e.country, e.date, e.image, d.P_id, d.Cost";
+$sql .= " GROUP BY e.s_id, e.name, e.price, e.country, e.date, e.image, d.P_id, d.Cost, e.author_id";
 
 // Выполнение запроса
 if (!empty($params)) {
