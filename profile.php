@@ -47,7 +47,7 @@ if (isset($_GET['error']) && $_GET['error'] === 'cancel_failed') {
 
     echo '<div>';
     echo '<h2>Записанные мероприятия</h2>';
-    echo '<ul>';
+    echo '<ul id="profile-events-list">';
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {

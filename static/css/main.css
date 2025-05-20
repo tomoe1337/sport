@@ -55,3 +55,36 @@ button{
 	text-align: center;
 	color: #b7625c;	
 }
+
+/* Стилизация списка мероприятий в профиле */
+#profile-events-list {
+    list-style: none; /* Убираем стандартные маркеры списка */
+    padding: 0; /* Убираем стандартный отступ слева */
+    margin-top: 20px; /* Отступ сверху от других элементов */
+}
+
+#profile-events-list li {
+    background-color: #f9f9f9; /* Легкий фон для каждого элемента списка */
+    border: 1px solid #ddd; /* Рамка вокруг элемента */
+    margin-bottom: 10px; /* Отступ между элементами списка */
+    padding: 10px; /* Внутренний отступ */
+    border-radius: 5px; /* Скругленные углы */
+    display: flex; /* Используем flexbox для выравнивания содержимого */
+    justify-content: space-between; /* Распределяем элементы по горизонтали */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+#profile-events-list li a {
+    /* Стилизация кнопки "Отменить" внутри списка */
+    color: #dc3545; /* Цвет текста кнопки "Отменить" */
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    padding: 5px 10px;
+    border: 1px solid #dc3545;
+    border-radius: 3px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#profile-events-list li a:hover {
+    background-color: #dc3545;
+    color: white;
+}
