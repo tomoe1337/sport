@@ -34,24 +34,17 @@
        echo "<img src='static/{$sport["image"]}' alt='' height='80px'>";
        echo "</a>";
        echo "</td>";
- echo '</td>';
-        echo '<td>';
-        echo "<a href='sport.php?s_id={$sport['s_id']}'>";
-        echo "<img src='static/{$sport["image"]}' alt='' height='80px'>";
-        echo "</a>";
-        echo "<a href='edit_sport.php?s_id={$sport['s_id']}' class='btn btn-secondary btn-sm'>Редактировать</a> ";
-        echo "<a href='vendor/delete_sport.php?s_id={$sport['s_id']}' class='btn btn-danger btn-sm'>Удалить</a> ";
-        echo "</td>";
- echo "<td>{$sport['registered_count']}</td>";
+
+        echo "<td>{$sport['registered_count']}</td>";
        echo '<td>'; // Ячейка для кнопок действий
        // Проверяем, залогинен ли пользователь и является ли он автором мероприятия
        if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $sport['author_id']) {
            // Пользователь является автором, показываем кнопки Редактировать и Удалить
-           echo "<a href='edit_sport.php?s_id={$sport['s_id']}'>Редактировать</a> ";
-           echo "<a href='vendor/delete_sport.php?s_id={$sport['s_id']}' onclick=\"return confirm('Вы уверены, что хотите удалить это мероприятие?');\">Удалить</a>";
+ echo "<a href='edit_sport.php?s_id={$sport['s_id']}'>Редактировать</a> ";
+ echo "<a href='vendor/delete_sport.php?s_id={$sport['s_id']}' onclick=\"return confirm('Вы уверены, что хотите удалить это мероприятие?');\">Удалить</a>";
        } else {
            // Пользователь не является автором или не залогинен, показываем кнопку Записаться
-           echo "<a href='vendor/register_for_sport.php?s_id={$sport['s_id']}' class='btn btn-primary btn-sm'>Записаться</a>";
+ echo "<a href='vendor/register_for_sport.php?s_id={$sport['s_id']}' class='btn btn-primary btn-sm'>Записаться</a>";
        }
         echo '</tr>';
     }
