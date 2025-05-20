@@ -40,18 +40,18 @@ $tasks = (mysqli_query($connect,"SELECT * FROM `comments` WHERE `s_id` = $s_id")
                     <?php echo "<img src= 'static/{$sport_info['image']}' alt='' height='160px'>";?>
                 </td>
                 <td>
-                    <?php echo "{$sport_info['s_id']}";?>                
+                    <?php echo "{$sport_info['s_id']}";?>
                 </td>
                 <td>
-                    <?php echo "{$sport_info['name']}";?>                
+                    <?php echo "{$sport_info['name']}";?>
 
                 </td>
                 <td>
-                    <?php echo "{$sport_info['country']}";?>              
+                    <?php echo "{$sport_info['country']}";?>
 
                 </td>
                 <td>
-                    <?php echo "{$sport_info['price']}";?>            
+                    <?php echo "{$sport_info['price']}";?>
 
                 </td>
                 <td>
@@ -59,6 +59,22 @@ $tasks = (mysqli_query($connect,"SELECT * FROM `comments` WHERE `s_id` = $s_id")
                 </td>
             </tr>
     </table>
+
+<?php
+// Получение списка зарегистрированных пользователей
+$registered_users_query = mysqli_query($connect, "SELECT u.full_name FROM registrations r JOIN users u ON r.user_id = u.id WHERE r.sport_id = $s_id");
+
+if (mysqli_num_rows($registered_users_query) > 0) {
+    echo '<h2>Зарегистрированные участники:</h2>';
+    echo '<ul>';
+    while ($user = mysqli_fetch_assoc($registered_users_query)) {
+        echo '<li>' . htmlspecialchars($user['full_name']) . '</li>';
+    }
+    echo '</ul>';
+} else {
+    echo '<p>На данное мероприятие еще никто не зарегистрировался.</p>';
+}
+?>
 
 <form action="/vendor/set_db_comments.php?s_id=<?=$s_id?>" method="POST" class="form-comment-treatment">
     <p>Новый комментарий:</p>
@@ -78,13 +94,13 @@ $tasks = (mysqli_query($connect,"SELECT * FROM `comments` WHERE `s_id` = $s_id")
 while ($comment = mysqli_fetch_assoc($tasks)){
     echo "<tr>";
     echo "<td>";
-    echo "{$comment['comment_id']}";                                       
+    echo "{$comment['comment_id']}";
     echo "</td>";
     echo "<td>";
-    echo "{$comment['comment']}";                                       
+    echo "{$comment['comment']}";
     echo "</td>";
     echo "<td>";
-    echo "{$comment['date']}";                                       
+    echo "{$comment['date']}";
     echo "</td>";
     echo "</tr>";
 }
