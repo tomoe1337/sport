@@ -1,4 +1,16 @@
 <?php
+ if (isset($_GET['success']) && $_GET['success'] === 'registered') {
+    echo '<p style="color: green;">Вы успешно записаны на мероприятие!</p>';
+    }
+    if (isset($_GET['error']) && $_GET['error'] === 'already_registered') {
+    echo '<p style="color: red;">Вы уже записаны на это мероприятие.</p>';
+    }
+    if (isset($_GET['error']) && $_GET['error'] === 'no_places') {
+    echo '<p style="color: red;">Нет свободных мест на данное мероприятие.</p>';
+    }
+   if (isset($_GET['error']) && $_GET['error'] === 'event_passed') {
+       echo '<p style="color: red;">Это мероприятие уже прошло.</p>';
+   }
     echo '<table class="sports-table">';
     while ($sport = mysqli_fetch_assoc($data)){
         echo '<tr>';
