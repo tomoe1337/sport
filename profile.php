@@ -1,4 +1,6 @@
 <?php
+    require_once "vendor/connect.php";
+
 	session_start();
 if (!isset($_SESSION['user'])){
 	header("Location: /");
