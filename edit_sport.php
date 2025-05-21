@@ -25,7 +25,7 @@ require_once "templates/base.php";
     </div>
     <div class="col-md-6">
         <label for="date" class="form-label">Дата:</label>
-        <input type="date" class="form-control" id="date" name="date" value="<?= $sport['date'] ?>" required>
+        <input type="datetime-local" class="form-control" id="date" name="date" value="<?= $sport['date'] ?>" required>
     </div>
     <div class="col-md-6">
         <label for="image" class="form-label">Текущее изображение:</label><br>
