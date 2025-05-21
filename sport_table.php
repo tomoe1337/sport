@@ -20,7 +20,6 @@
    echo '<th>Стоимость</th>';
    echo '<th>Изображение</th>';
    echo '<th>Записано</th>';
-   echo '<th>Действия</th>'; // Колонка для кнопок действий
    echo '</tr>';
    echo '</thead>';
    echo '<tbody>';
